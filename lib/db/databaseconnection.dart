@@ -60,7 +60,7 @@ class DatabaseConnection{
       final db = await instance.database;
 
       //insert to data into database table
-      final id = await db?.insert(staffdatatable, staffdata.toJson());
+      final id = await db!.insert(staffdatatable, staffdata.toJson());
       return staffdata.copy(id:id);
 
     }
@@ -71,7 +71,7 @@ class DatabaseConnection{
       // defining database
       final db = await instance.database;
 
-      final maps = await db?.query(
+      final maps = await db!.query(
         staffdatatable,
         // define all the column u want to retrieve from the table
         columns: StaffDataTable.values,
@@ -97,7 +97,7 @@ class DatabaseConnection{
 
       // to create the data where it will display the most recent
       const ascendingorder = '${StaffDataFields.checkin} ASC';  
-      final result = await db?.query(staffdatatable, orderBy: ascendingorder);
+      final result = await db!.query(staffdatatable, orderBy: ascendingorder);
 
       // convert json object back to database model object
       return result!.map((json) => DatabaseModel.fromJson(json)).toList();
@@ -134,6 +134,6 @@ class DatabaseConnection{
     Future close()async{
       final db= await instance.database;
 
-      db?.close();
+      db!.close();
     }
 }

@@ -3,12 +3,12 @@ const String staffdatatable = 'staffdatatable';
 
 // create value list so that data can be retrieved
 class StaffDataTable{
-  static final List<String> values = [
+  static List<String> values = [
     id, staffname, number, checkin
   ];
 
   // pass all the field inside the list
-  static const String id = '_id';
+  static const String id = 'id';
   static const String staffname = 'staffname';
   static const String number = 'phone_number';
   static const String checkin = 'checkin_time';
@@ -16,7 +16,7 @@ class StaffDataTable{
 
 // to define all the fieldname 
 class StaffDataFields {
-  static const String id = '_id';
+  static const String id = 'id';
   static const String staffname = 'staffname';
   static const String number = 'phone_number';
   static const String checkin = 'checkin_time';
