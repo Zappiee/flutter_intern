@@ -76,7 +76,8 @@ class _StaffDetailPage extends State<StaffDetailPage> {
       onPressed: () async{
         final staffname = staffdata.staffname;
         final contactnumber = staffdata.number;
-        final url = 'mailto:?subject=$staffname&body=$contactnumber';
+        final checkin = staffdata.checkin;
+        final url = 'mailto:?subject=$staffname&body=staff contact number: $contactnumber \n last check in time: $checkin';
 
         if(await canLaunch(url)){
           await launch(url);
