@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:internship_assessment/db/databaseconnection.dart';
 import 'package:internship_assessment/model/databasemodel.dart';
+import 'package:internship_assessment/page/editstaff.dart';
 import 'package:internship_assessment/page/staff_detail_page.dart';
+import 'package:internship_assessment/page/mainpagedesign.dart';
 
 class DisplayMain extends StatefulWidget {
   @override
@@ -39,7 +41,7 @@ class _DisplayMainState extends State<DisplayMain> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Staffdata',
+            'Staff Data',
             style: TextStyle(fontSize: 24),
           ),
           actions: const [Icon(Icons.search), SizedBox(width: 12)],
@@ -49,20 +51,30 @@ class _DisplayMainState extends State<DisplayMain> {
               ? const CircularProgressIndicator()
               : staffdata.isEmpty
                   ? const Text(
-                      'No staffdata',
+                      'No data of staff found',
                       style: TextStyle(color: Colors.white, fontSize: 24),
                     )
                   : buildNotes(),
         ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          child: const Icon(Icons.add),
+          onPressed: () async {
+            await Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const EditStaff()),
+            );
+
+            refreshPage();
+          },
+        ),
       );
 
   Widget buildNotes() => StaggeredGridView.countBuilder(
-        padding: const EdgeInsets.all(8),
         itemCount: staffdata.length,
         staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
-        crossAxisCount: 4,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
+        crossAxisCount: 1,
+        mainAxisSpacing: 1,
+        crossAxisSpacing: 10,
         itemBuilder: (context, index) {
           final newstaffdata = staffdata[index];
 
@@ -74,6 +86,7 @@ class _DisplayMainState extends State<DisplayMain> {
 
               refreshPage();
             },
+            child: MainPageDesign(newstaffdata: newstaffdata, index: index),
           );
         },
       );

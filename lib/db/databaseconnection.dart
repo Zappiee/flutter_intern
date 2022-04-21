@@ -47,9 +47,9 @@ class DatabaseConnection{
       
       await db.execute('''
         CREATE TABLE $staffdatatable(
-          ${StaffDataFields.id} $idType
-          ${StaffDataFields.staffname} $textType
-          ${StaffDataFields.number} $textType
+          ${StaffDataFields.id} $idType,
+          ${StaffDataFields.staffname} $textType,
+          ${StaffDataFields.number} $textType,
           ${StaffDataFields.checkin} $textType
         )
       ''');
@@ -82,7 +82,7 @@ class DatabaseConnection{
       );
 
       // convert first item of the list and convert it back to to object
-      if (maps!.isNotEmpty){
+      if (maps.isNotEmpty){
         return DatabaseModel.fromJson(maps.first);
       }
       else{
@@ -100,7 +100,7 @@ class DatabaseConnection{
       final result = await db!.query(staffdatatable, orderBy: ascendingorder);
 
       // convert json object back to database model object
-      return result!.map((json) => DatabaseModel.fromJson(json)).toList();
+      return result.map((json) => DatabaseModel.fromJson(json)).toList();
     }
 
 
