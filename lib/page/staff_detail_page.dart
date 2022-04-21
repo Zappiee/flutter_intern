@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:internship_assessment/db/databaseconnection.dart';
 import 'package:internship_assessment/model/databasemodel.dart';
 import 'package:internship_assessment/page/editstaff.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class StaffDetailPage extends StatefulWidget {
   final int staffid;
@@ -38,7 +39,7 @@ class _StaffDetailPage extends State<StaffDetailPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          actions: [editButton(), deleteButton()]
+          actions: [shareButton(), editButton(), deleteButton()]
         ),
         body: isLoading
             ? const Center(child: CircularProgressIndicator())
@@ -69,6 +70,19 @@ class _StaffDetailPage extends State<StaffDetailPage> {
                 ),
               ),
       );
+
+  Widget shareButton() => IconButton(
+      icon: const Icon(Icons.share),
+      onPressed: () async{
+        final staffname = staffdata.staffname;
+        final contactnumber = staffdata.number;
+        final url = 'mailto:?subject=$staffname&body=$contactnumber';
+
+        if(await canLaunch(url)){
+          await launch(url);
+        }
+      }
+  );
 
   Widget editButton() => IconButton(
       icon: const Icon(Icons.edit_outlined),

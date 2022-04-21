@@ -82,6 +82,7 @@ class _EditStaffState extends State<EditStaff> {
     final staffdata = widget.staffdata!.copy(
       staffname: staffname,
       number: number,
+      checkin: DateTime.now(),
     );
 
     await DatabaseConnection.instance.update(staffdata);

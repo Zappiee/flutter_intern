@@ -15,7 +15,6 @@ class MainPageDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final time = DateFormat.yMd().add_jm().format(newstaffdata.checkin);
-
     return Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -24,7 +23,7 @@ class MainPageDesign extends StatelessWidget {
           Text(
             newstaffdata.staffname,
             style: const TextStyle(
-              color: Colors.black,
+              color: Colors.green,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),

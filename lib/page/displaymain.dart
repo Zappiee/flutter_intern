@@ -54,7 +54,7 @@ class _DisplayMainState extends State<DisplayMain> {
                       'No data of staff found',
                       style: TextStyle(color: Colors.white, fontSize: 24),
                     )
-                  : buildNotes(),
+                  : displaystaff(),
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
@@ -69,7 +69,7 @@ class _DisplayMainState extends State<DisplayMain> {
         ),
       );
 
-  Widget buildNotes() => StaggeredGridView.countBuilder(
+  Widget displaystaff() => StaggeredGridView.countBuilder(
         itemCount: staffdata.length,
         staggeredTileBuilder: (index) => const StaggeredTile.fit(2),
         crossAxisCount: 1,
