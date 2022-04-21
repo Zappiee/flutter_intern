@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.internship_assessment">
+    package="com.example.flutter_contact">
    <application
-        android:label="internship_assessment"
+        android:label="Random Contact Generator"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,4 +1,4 @@
-# internship_assessment
+# flutter_contact
 
 A new Flutter project.
 
