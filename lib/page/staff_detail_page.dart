@@ -79,6 +79,7 @@ class _StaffDetailPage extends State<StaffDetailPage> {
         final checkin = staffdata.checkin;
         final url = 'mailto:?subject=$staffname&body=staff contact number: $contactnumber \n last check in time: $checkin';
 
+        
         if(await canLaunch(url)){
           await launch(url);
         }
